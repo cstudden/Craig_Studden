@@ -1,12 +1,15 @@
+// Nasa API
 const apiKey = 'qeTK5Fs5T4ZvZkB4fmv8tkweHsZvMR7sk0zmliV4';
 
+// URL for Fetch
 function fetchAPOD(date) {
   const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`;
 
+  // Fetching NASA Data
   fetch(apiUrl)
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Error');
       }
       return response.json();
     })
@@ -16,37 +19,33 @@ function fetchAPOD(date) {
       let imageUrl = data.url;
       const explanation = data.explanation;
 
-      // Check if high-resolution image URL is available
-      if (data.hdurl) {
-        imageUrl = data.hdurl;
-      }
-
-      // Clear previous content
+      // Clear pic-container content to make room for API Data
       const pictureContainer = document.getElementById('picture-container');
       pictureContainer.innerHTML = '';
 
-      // Display the picture
+      // Show Pic
       const img = document.createElement('img');
       img.src = imageUrl;
       pictureContainer.appendChild(img);
 
-      // Display additional information
+      // Show Description Title
       const heading = document.createElement('h2');
       heading.textContent = title;
       pictureContainer.appendChild(heading);
 
+      // Show Description
       const paragraph = document.createElement('p');
       paragraph.textContent = `${date}: ${explanation}`;
       pictureContainer.appendChild(paragraph);
     })
-    .catch(error => console.error('Error fetching data:', error));
+    .catch(error => console.error('Error:', error));
 }
 
-// Initial fetch for today's date
+// Fetch Todays Pic
 fetchAPOD('');
 
-// Add event listener for the "Change Date" button
-document.getElementById('change-date-button').addEventListener('click', () => {
+// Change Date Button
+document.getElementById('date').addEventListener('click', () => {
   const date = prompt('Enter date (YYYY-MM-DD):');
   if (date) {
     fetchAPOD(date);
