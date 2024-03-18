@@ -1,75 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #175676;
-  margin: 0;
-  padding: 0;
+/* Studden Studios Logo */
+.navbar-brand {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
-/* Box holding everything */
-.container {
-  max-width: 1000px;
-  margin: 20px auto;
-  background-color: #CCE6F4;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+/* Furniture text */
+.furniture {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
 }
 
-/* NASA Title */
-#title {
-  padding-bottom: 10px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-size: 40px;
-  color: #4BA3C3;
-  text-shadow: 1px 1px 1px black;
+/* Cards */
+.card {
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
 }
 
-/* Picture */
-#picture-container img {
-  display: block;
-  margin: 0 auto;
+/* Zoom in animation */
+.card:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
+.card-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 0 !important;
+}
+
+/* Glide JS img size */
+.glide__slide img {
   max-width: 100%;
   height: auto;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Description Title */
-#picture-container h2 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-size: 20px;
-}
+/* Desktop view*/
+@media (min-width: 576px) {
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
 
-/* Description Text */
-#picture-container p {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-}
-
-
-/* Change Date Button */
-
-#date {
-  margin-top: 20px;
-  background-color: #4bA3C3;
-  border: none;
-  color: white;
-  border-radius: 15px;
-  padding: 15px 26px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-}
-
-/* Change Date Button Hover */
-#date:hover {
-  background-color: #175676;
+  .card-title {
+    font-size: 1.2rem;
+  }
 }

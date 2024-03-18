@@ -1,53 +1,42 @@
-// Nasa API
-const apiKey = 'qeTK5Fs5T4ZvZkB4fmv8tkweHsZvMR7sk0zmliV4';
+// Picture change on cards
+document.addEventListener('DOMContentLoaded', function () {
+    var gliders = document.querySelectorAll('.glide');
+    for (var i = 0; i < gliders.length; i++) {
+        // Effects
+        new Glide(gliders[i], {
+            type: 'carousel',
+            perView: 1,
+            focusAt: 'center',
+            autoplay: 2000,
+        }).mount();
+    }
 
-// URL for Fetch
-function fetchAPOD(date) {
-  const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`;
+    // Zoom in on card pictures
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true
+    });
+});
 
-  // Fetching NASA Data
-  fetch(apiUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error');
-      }
-      return response.json();
-    })
-    .then(data => {
-      const title = data.title;
-      const date = data.date;
-      let imageUrl = data.url;
-      const explanation = data.explanation;
+// Initial website fade in
+var slideInAnimation = anime({
+    // Effects
+    targets: 'body',
+    opacity: [0, 1],
+    duration: 3000,
+    easing: 'easeInOutQuad'
+});
 
-      // Clear pic-container content to make room for API Data
-      const pictureContainer = document.getElementById('picture-container');
-      pictureContainer.innerHTML = '';
+document.addEventListener('DOMContentLoaded', function () {
+    slideInAnimation.play();
+});
 
-      // Show Pic
-      const img = document.createElement('img');
-      img.src = imageUrl;
-      pictureContainer.appendChild(img);
-
-      // Show Description Title
-      const heading = document.createElement('h2');
-      heading.textContent = title;
-      pictureContainer.appendChild(heading);
-
-      // Show Description
-      const paragraph = document.createElement('p');
-      paragraph.textContent = `${date}: ${explanation}`;
-      pictureContainer.appendChild(paragraph);
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-// Fetch Todays Pic
-fetchAPOD('');
-
-// Change Date Button
-document.getElementById('date').addEventListener('click', () => {
-  const date = prompt('Enter date (YYYY-MM-DD):');
-  if (date) {
-    fetchAPOD(date);
-  }
+// Furniture type in animation
+$(document).ready(function () {
+    $('.furniture').textillate({
+        in: {
+            initialDelay: 1000,
+            delay: 150,
+        }
+    });
 });
